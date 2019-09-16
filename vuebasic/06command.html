@@ -1,0 +1,62 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Vue</title>
+<script src="src/vue.js"></script>
+
+
+</head>
+<body>
+
+<div id="app">
+
+<p v-if="seen">显示 seen</p>
+<hr/>
+<p v-if="status == 'A'">显示 status A</p>
+<p v-if="status == 'B'">显示 status B</p>
+<hr/>
+
+<ul>
+	<li v-for="l in list">
+		{{l.name}} | {{l.age}}
+
+		<span v-if="l.score >= 60">及格</span>
+		<span v-if="l.score < 60">不及格</span>
+	</li>
+</ul>
+
+<hr/>
+
+
+
+<a v-bind:href="url">xxxxxx</a>
+<a :href="url">xxxxxx</a>
+</div>
+
+
+
+<script>
+
+var app = new Vue({
+	el : '#app',
+	data : {
+		seen:true,
+		status:'A',
+		url:"http://www.baidu.com",
+		list : [
+			{name:'张三',age:5,score:50},
+			{name:'李四',age:6,score:60},
+			{name:'王五',age:7,score:70},
+			{name:'赵六',age:8,score:80}
+		]
+	}
+});
+
+setTimeout(function(){
+	app.seen = false;
+	app.url = "http://www.sina.com.cn"
+},1000);
+</script>
+</body>
+</html>

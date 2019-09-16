@@ -1,0 +1,53 @@
+<!doctype>
+<html>
+<head>
+
+<meta charset="utf-8"/>
+<script>
+
+
+var obj = {}
+
+Object.defineProperty(obj,'name',{
+	enumerable:true,// 是否可枚举，默认值 true
+                   // 如果为false的话，打印这个obj对象，是看不到name这个属性
+	writable:true,  // 是否可写，默认值 true
+                   // 如果为false的话，给name赋值，不会生效
+	configurable:true, // 是否可配置（是否可删除），默认值 true
+                      // 如果为true，delete obj.name，再打印obj，则显示{}
+                      // 如果为false，delete obj.name，再打印obj,则显示{name:undefined}
+	value:'swr', // name对应的值
+})
+
+Object.defineProperty(obj,'age',{
+	enumerable:true,
+	configurable:true,
+	//setter 与 getter不能与writeable或value同时出现
+	set:function(v1){
+		console.log(v1);
+	},
+	get:function(){
+		console.log("get")
+	}
+})
+
+
+
+console.log(obj)
+
+
+for(var pro in obj){
+	console.log(pro + ":" + obj[pro]); 
+}
+
+obj.age = 4
+obj.age = 5
+
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

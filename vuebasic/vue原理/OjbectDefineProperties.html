@@ -1,0 +1,41 @@
+<!doctype>
+<html>
+<head>
+
+<meta charset="utf-8"/>
+<script>
+
+const object1 = {};
+
+Object.defineProperties(object1, {
+  a: {
+	get:function(){
+	},
+	set:function(v){
+		debugger;
+		console.log("setter",v);
+	}
+  },
+  b: {
+	value : 56,
+	writable:false,
+	enumerable:false,
+  }
+});
+
+console.log(object1.a);
+console.log(object1.b);
+
+object1.a = 4;
+object1.a = 5;
+
+console.log(object1.a)
+
+console.log(Object.entries(object1))
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

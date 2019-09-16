@@ -1,0 +1,41 @@
+<!doctype>
+<html>
+<head>
+
+<meta charset="utf-8"/>
+<script>
+
+
+var obj = {x:1,y:1}
+
+Object.defineProperty(obj,'name',{
+	enumerable:false,// 是否可枚举，默认值 true
+                   // 如果为false的话，打印这个obj对象，是看不到name这个属性
+	writable:false,  // 是否可写，默认值 true
+                   // 如果为false的话，给name赋值，不会生效
+	configurable:false, // 是否可配置（是否可删除），默认值 true
+                      // 如果为true，delete obj.name，再打印obj，则显示{}
+                      // 如果为false，delete obj.name，再打印obj,则显示{name:undefined}
+	value:'devil13th', // name对应的值
+})
+
+
+console.log("------------ 测试 enumerable = false");
+for(var pro in obj){
+	console.log(pro + ":" + obj[pro]); 
+}
+
+console.log("------------ 测试 writable 属性");
+obj.name = "xx";
+console.log(obj.name);
+
+console.log("------------ 测试 configurable 属性");
+delete obj.name
+console.log(obj);
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

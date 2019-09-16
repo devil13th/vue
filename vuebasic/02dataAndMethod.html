@@ -1,0 +1,41 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Vue</title>
+<script src="src/vue.js"></script>
+
+
+</head>
+<body>
+
+<div id="app">
+{{message}}{{name}}
+</div>
+
+
+
+<script>
+var data = {
+	message:"hello ",
+	name : "devil13th"
+}
+
+
+var app = new Vue({
+	el : '#app',
+	data 
+});
+
+app.name = "Vue"
+console.log("data.name:",data.name);
+data.name = "3nd"
+console.log("app.name:",app.name);
+
+console.log("app.$data.name:",app.$data.name);
+console.log("app.$el:",app.$el);
+
+console.log(app)
+</script>
+</body>
+</html>

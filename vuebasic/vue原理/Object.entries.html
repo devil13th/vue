@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+<head>
+
+<meta charset="utf-8"/>
+<script>
+const a = {
+	a:1,
+	b:2,
+	c:3
+}
+
+console.log(Object.entries(a));
+
+for (let [key, value] of Object.entries(a)) {
+  console.log(`${key}: ${value}`);
+}
+
+
+console.log("Object.keys",Object.keys(a));
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
