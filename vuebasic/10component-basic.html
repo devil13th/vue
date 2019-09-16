@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			vue
+		</title>
+		<script src="src/vue.js"></script>
+	</head>
+
+	<body>
+		<pre>
+组件教程：
+	1.给组件传递静态/动态属性值
+	2.组件事件定义
+	3.组件的事件方法中使用组件的属性值
+		</pre>
+
+		<div id="app">
+			{{name}}
+
+
+			<hr/>
+			<my-component firstname="thd" lastname="devil13th" :age="age"></my-component>
+		</div>
+
+
+
+	<script>
+		Vue.component('my-component', {
+			// component's properties
+			props:["firstname","lastname","age"],
+			// template's content
+			template : '<div style="color:red">name:{{firstname}} - {{lastname}},age:{{age}} <br/> {{welcome}} <br/> <input type="button" value="+" @click="increase"/> <input type="button" value="-" @click="decrease"/></div>',
+			data : function(){
+				// method invoke component's properties and defined some other properties
+				return{
+					welcome : "welcome:" + this.lastname + ":" + this.age,
+					age : this.age,
+					lastname:this.name
+
+				}
+			},
+			methods : {
+				increase : function(){
+					console.log("increase");
+					this.age ++;
+				},
+
+				decrease : function(){
+					console.log("decrease");
+					if(this.age > 0){
+						this.age--;
+					}else{
+						alert("age can't be decreased ");
+					}
+				}
+			}
+		})
+
+
+		let vue = new Vue({
+			el:"#app",
+			data : {
+				name:"vue",
+				age : 5
+			}
+		});
+	</script>
+	</body>
+</html>

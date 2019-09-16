@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			vue
+		</title>
+		<script src="src/vue.js"></script>
+	</head>
+
+	<body>
+		<pre>
+组件教程：
+	1.组件的自定义事件以及传递
+	2.子组件出发父组件传递的函数
+		</pre>
+
+		<div id="app">
+			{{name}}:{{age}}
+
+
+			<hr/>
+			<my-component 
+				:age="age"
+				@add = "getTotal"
+				@reduce = "getTotal"
+			></my-component>
+
+			<my-component 
+				:age="age"
+				@add = "getTotal"
+				@reduce = "getTotal"
+			></my-component>
+		</div>
+
+
+
+	<script>
+		Vue.component('my-component', {
+			// component's properties
+			props:["age"],
+			// template's content
+			template : '<div style="color:red">component age:{{myage}}|{{age}} <br/><input type="button" value="+" @click="increase"/> <input type="button" value="-" @click="decrease"/></div>',
+			data : function(){
+				return  {
+					myage : this.age
+				}
+			},
+			methods : {
+				increase : function(){
+					console.log("increase");
+					this.age++;
+
+					//invoke @add 
+					this.$emit('add',this.age);
+				},
+
+				decrease : function(){
+					console.log("decrease");
+					this.myage--;
+					//invoke @reduce
+					this.$emit('reduce',this.myage);
+				}
+			}
+		})
+
+
+		let vue = new Vue({
+			el:"#app",
+			data : {
+				name:"vue",
+				age : 5
+			},
+			methods : {
+				getTotal:function(data){
+					this.age = data
+				}
+			}
+		});
+	</script>
+	</body>
+</html>
